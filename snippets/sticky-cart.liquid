@@ -1,0 +1,334 @@
+{% comment %}
+  Sticky Cart - Simple Shopify Theme Component
+  Clean, conversion-focused design
+{% endcomment %}
+
+<div class="sticky-cart" id="stickyCart" data-product-id="{{ product.id }}">
+  <div class="sticky-cart-content">
+    <!-- Product Info -->
+    <div class="product-info">
+      <img src="{{ product.featured_image | img_url: '60x60' }}" 
+           alt="{{ product.title }}" 
+           class="product-thumb">
+      <div class="product-details">
+        <h4 class="product-name">{{ product.title }}</h4>
+        <div class="price-info">
+          {% if product.compare_at_price > product.price %}
+            <span class="sale-price">${{ product.price | money_without_currency }}</span>
+            <span class="original-price">${{ product.compare_at_price | money_without_currency }}</span>
+          {% else %}
+            <span class="current-price">${{ product.price | money_without_currency }}</span>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+
+    <!-- Quantity & Add to Cart -->
+    <div class="cart-actions">
+      <div class="quantity-selector">
+        <button class="qty-btn minus" onclick="updateQuantity(-1)">-</button>
+        <input type="number" value="1" min="1" class="qty-input" id="stickyQty">
+        <button class="qty-btn plus" onclick="updateQuantity(1)">+</button>
+      </div>
+
+      <button class="add-to-cart-btn" 
+              onclick="addToCartSticky()"
+              data-variant-id="{{ product.selected_or_first_available_variant.id }}">
+        Add to Cart
+      </button>
+    </div>
+
+    <!-- Trust Elements -->
+    <div class="trust-elements">
+      <span class="trust-item">🚚 Free Shipping</span>
+      <span class="trust-item">🛡️ 30-Day Returns</span>
+    </div>
+  </div>
+</div>
+
+<style>
+  .sticky-cart {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(255, 255, 255, 0.95);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
+    z-index: 1000;
+    box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.1);
+  }
+
+  .sticky-cart.visible {
+    transform: translateY(0);
+  }
+
+  .sticky-cart-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    gap: 1rem;
+  }
+
+  .product-info {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex: 1;
+  }
+
+  .product-thumb {
+    width: 60px;
+    height: 60px;
+    border-radius: 8px;
+    object-fit: cover;
+  }
+
+  .product-details {
+    flex: 1;
+  }
+
+  .product-name {
+    font-size: 1rem;
+    font-weight: 600;
+    margin: 0 0 0.25rem 0;
+    color: #1f2937;
+  }
+
+  .price-info {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .sale-price, .current-price {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #10b981;
+  }
+
+  .original-price {
+    font-size: 0.9rem;
+    color: #6b7280;
+    text-decoration: line-through;
+  }
+
+  .cart-actions {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .quantity-selector {
+    display: flex;
+    align-items: center;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    overflow: hidden;
+  }
+
+  .qty-btn {
+    background: #f9fafb;
+    border: none;
+    width: 36px;
+    height: 36px;
+    cursor: pointer;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #4b5563;
+    transition: background-color 0.2s;
+  }
+
+  .qty-btn:hover {
+    background: #e5e7eb;
+  }
+
+  .qty-input {
+    width: 50px;
+    height: 36px;
+    text-align: center;
+    border: none;
+    border-left: 1px solid #d1d5db;
+    border-right: 1px solid #d1d5db;
+    font-weight: 600;
+  }
+
+  .add-to-cart-btn {
+    background: linear-gradient(135deg, #10b981, #059669);
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+  }
+
+  .add-to-cart-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+  }
+
+  .add-to-cart-btn:disabled {
+    background: #9ca3af;
+    cursor: not-allowed;
+    transform: none;
+  }
+
+  .trust-elements {
+    display: flex;
+    gap: 1rem;
+    font-size: 0.8rem;
+    color: #6b7280;
+  }
+
+  .trust-item {
+    white-space: nowrap;
+  }
+
+  /* Mobile Responsive */
+  @media (max-width: 768px) {
+    .sticky-cart-content {
+      flex-direction: column;
+      gap: 0.75rem;
+      padding: 1rem;
+    }
+
+    .product-info {
+      width: 100%;
+    }
+
+    .cart-actions {
+      width: 100%;
+      justify-content: center;
+    }
+
+    .trust-elements {
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .add-to-cart-btn {
+      flex: 1;
+      min-width: 120px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .trust-elements {
+      display: none;
+    }
+    
+    .product-name {
+      font-size: 0.9rem;
+    }
+  }
+</style>
+
+<script>
+// Sticky Cart Functionality
+document.addEventListener('DOMContentLoaded', function() {
+  const stickyCart = document.getElementById('stickyCart');
+  const heroSection = document.querySelector('.hero-tech');
+  
+  if (!stickyCart || !heroSection) return;
+
+  // Show/hide sticky cart on scroll
+  function toggleStickyCart() {
+    const heroBottom = heroSection.offsetTop + heroSection.offsetHeight;
+    const scrollY = window.scrollY;
+    
+    if (scrollY > heroBottom) {
+      stickyCart.classList.add('visible');
+    } else {
+      stickyCart.classList.remove('visible');
+    }
+  }
+
+  // Throttled scroll event
+  let ticking = false;
+  function handleScroll() {
+    if (!ticking) {
+      requestAnimationFrame(function() {
+        toggleStickyCart();
+        ticking = false;
+      });
+      ticking = true;
+    }
+  }
+
+  window.addEventListener('scroll', handleScroll);
+});
+
+// Quantity Functions
+function updateQuantity(change) {
+  const qtyInput = document.getElementById('stickyQty');
+  const currentQty = parseInt(qtyInput.value) || 1;
+  const newQty = Math.max(1, currentQty + change);
+  qtyInput.value = newQty;
+}
+
+// Add to Cart Function
+function addToCartSticky() {
+  const btn = document.querySelector('.add-to-cart-btn');
+  const qty = document.getElementById('stickyQty').value;
+  const variantId = btn.dataset.variantId;
+  
+  if (!variantId) return;
+
+  // Disable button
+  btn.disabled = true;
+  btn.textContent = 'Adding...';
+
+  // Add to cart via Shopify AJAX
+  fetch('/cart/add.js', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      quantity: parseInt(qty),
+      id: variantId
+    })
+  })
+  .then(response => response.json())
+  .then(data => {
+    // Success feedback
+    btn.textContent = 'Added!';
+    btn.style.background = '#059669';
+    
+    // Update cart count if element exists
+    const cartCount = document.querySelector('.cart-count');
+    if (cartCount) {
+      fetch('/cart.js')
+        .then(response => response.json())
+        .then(cart => {
+          cartCount.textContent = cart.item_count;
+        });
+    }
+    
+    // Reset button after 2 seconds
+    setTimeout(() => {
+      btn.disabled = false;
+      btn.textContent = 'Add to Cart';
+      btn.style.background = '';
+    }, 2000);
+  })
+  .catch(error => {
+    console.error('Error:', error);
+    btn.disabled = false;
+    btn.textContent = 'Try Again';
+    
+    setTimeout(() => {
+      btn.textContent = 'Add to Cart';
+    }, 2000);
+  });
+}
+</script> 

@@ -1,0 +1,312 @@
+{% comment %}
+  Hero Section for AI Translation Earbuds
+  Features animated circuit background, product showcase, and compelling CTAs
+{% endcomment %}
+
+<section class="hero-tech" id="heroTech">
+  <!-- Animated Circuit Background -->
+  <div class="animated-circuit-bg">
+    <canvas id="circuitCanvas"></canvas>
+    <div class="circuit-overlay"></div>
+  </div>
+
+  <div class="container">
+    <div class="hero-grid">
+      <!-- Hero Content -->
+      <div class="hero-content">
+        <div class="hero-badge">
+          <span class="badge-text">🚀 Revolutionary AI Technology</span>
+        </div>
+
+        <h1 class="hero-title">
+          <span class="gradient-text">{{ section.settings.hero_title | default: 'Break Language Barriers' }}</span>
+          <span class="highlight-text">with AI Translation Earbuds</span>
+        </h1>
+
+        <p class="hero-subtitle">
+          {{ section.settings.hero_subtitle | default: 'Communicate instantly in 163 languages with 98% accuracy. The future of global communication is here.' }}
+        </p>
+
+        <!-- Hero Stats -->
+        <div class="hero-stats">
+          <div class="stat-item" data-animate="counter">
+            <span class="stat-number" data-count="163">0</span>
+            <span class="stat-label">Languages</span>
+          </div>
+          <div class="stat-item" data-animate="counter">
+            <span class="stat-number" data-count="98">0</span>
+            <span class="stat-unit">%</span>
+            <span class="stat-label">Accuracy</span>
+          </div>
+          <div class="stat-item" data-animate="counter">
+            <span class="stat-number" data-count="0.5">0</span>
+            <span class="stat-unit">s</span>
+            <span class="stat-label">Response Time</span>
+          </div>
+        </div>
+
+        <!-- Pricing Display -->
+        <div class="pricing-display">
+          <div class="price-main">
+            <span class="currency">$</span>
+            <span class="amount">{{ section.settings.sale_price | default: '89' }}</span>
+          </div>
+          <div class="price-comparison">
+            <span class="original-price">${{ section.settings.original_price | default: '149' }}</span>
+            <span class="savings-badge">Save 40%</span>
+          </div>
+        </div>
+
+        <!-- CTA Section -->
+        <div class="hero-cta">
+          <button class="btn-primary pulse-animation" 
+                  data-product-id="{{ product.id }}"
+                  onclick="addToCart({{ product.selected_or_first_available_variant.id }})">
+            <span class="btn-text">Order Now - ${{ section.settings.sale_price | default: '89' }}</span>
+            <span class="btn-icon">⚡</span>
+          </button>
+          
+          <div class="cta-benefits">
+            <div class="benefit-item">
+              <span class="icon">🚚</span>
+              <span class="text">Free Worldwide Shipping</span>
+            </div>
+            <div class="benefit-item">
+              <span class="icon">🛡️</span>
+              <span class="text">30-Day Money Back</span>
+            </div>
+            <div class="benefit-item">
+              <span class="icon">⏰</span>
+              <span class="text">Limited Time: 40% OFF</span>
+            </div>
+          </div>
+
+          <p class="urgency-text">
+            ⚡ <strong>Limited Time Offer:</strong> Only {{ section.settings.stock_count | default: '23' }} units left at this price!
+          </p>
+        </div>
+      </div>
+
+      <!-- Product Showcase -->
+      <div class="product-showcase">
+        <div class="product-container">
+          <!-- 3D Product Viewer -->
+          <div class="product-3d-viewer" id="product3D">
+            <div class="product-images">
+              {% for image in product.images limit: 8 %}
+                <img src="{{ image | img_url: '800x800' }}" 
+                     alt="{{ product.title }} - View {{ forloop.index }}"
+                     class="product-angle {% if forloop.first %}active{% endif %}"
+                     data-angle="{{ forloop.index0 }}">
+              {% endfor %}
+            </div>
+            
+            <div class="rotation-controls">
+              <button class="rotate-btn" data-direction="left">←</button>
+              <span class="rotation-indicator">360° View</span>
+              <button class="rotate-btn" data-direction="right">→</button>
+            </div>
+          </div>
+
+          <!-- Floating Feature Highlights -->
+          <div class="floating-features">
+            <div class="feature-highlight" data-feature="translation">
+              <span class="feature-icon">🌍</span>
+              <span class="feature-text">163 Languages</span>
+            </div>
+            <div class="feature-highlight" data-feature="battery">
+              <span class="feature-icon">🔋</span>
+              <span class="feature-text">50H Battery</span>
+            </div>
+            <div class="feature-highlight" data-feature="accuracy">
+              <span class="feature-icon">🎯</span>
+              <span class="feature-text">98% Accurate</span>
+            </div>
+          </div>
+
+          <!-- Product Variants Selector -->
+          {% if product.variants.size > 1 %}
+            <div class="variant-selector">
+              <h4>Choose Your Model:</h4>
+              <div class="variants-grid">
+                {% for variant in product.variants %}
+                  <label class="variant-option">
+                    <input type="radio" 
+                           name="variant" 
+                           value="{{ variant.id }}"
+                           {% if variant == product.selected_or_first_available_variant %}checked{% endif %}>
+                    <span class="variant-label">
+                      <span class="variant-title">{{ variant.title }}</span>
+                      <span class="variant-price">${{ variant.price | money_without_currency }}</span>
+                    </span>
+                  </label>
+                {% endfor %}
+              </div>
+            </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scroll Indicator -->
+  <div class="scroll-indicator">
+    <div class="scroll-arrow"></div>
+    <span class="scroll-text">Discover More Features</span>
+  </div>
+</section>
+
+<style>
+  .hero-tech {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 50%, #06b6d4 100%);
+  }
+
+  .animated-circuit-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.1;
+  }
+
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+
+  .hero-title {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+    font-weight: 700;
+  }
+
+  .gradient-text {
+    background: linear-gradient(45deg, #06b6d4, #10b981);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .hero-stats {
+    display: flex;
+    gap: 2rem;
+    margin: 2rem 0;
+  }
+
+  .stat-item {
+    text-align: center;
+    color: white;
+  }
+
+  .stat-number {
+    display: block;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #10b981;
+  }
+
+  .btn-primary {
+    background: linear-gradient(45deg, #10b981, #059669);
+    color: white;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 30px rgba(16, 185, 129, 0.3);
+  }
+
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 15px 40px rgba(16, 185, 129, 0.4);
+  }
+
+  .pulse-animation {
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+  }
+
+  .product-3d-viewer {
+    position: relative;
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+
+  .product-images img {
+    width: 100%;
+    height: auto;
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+  }
+
+  @media (max-width: 768px) {
+    .hero-grid {
+      grid-template-columns: 1fr;
+      text-align: center;
+    }
+    
+    .hero-stats {
+      justify-content: center;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Hero Tech",
+  "settings": [
+    {
+      "type": "text",
+      "id": "hero_title",
+      "label": "Hero Title",
+      "default": "Break Language Barriers"
+    },
+    {
+      "type": "textarea",
+      "id": "hero_subtitle",
+      "label": "Hero Subtitle",
+      "default": "Communicate instantly in 163 languages with 98% accuracy. The future of global communication is here."
+    },
+    {
+      "type": "text",
+      "id": "sale_price",
+      "label": "Sale Price",
+      "default": "89"
+    },
+    {
+      "type": "text",
+      "id": "original_price",
+      "label": "Original Price",
+      "default": "149"
+    },
+    {
+      "type": "number",
+      "id": "stock_count",
+      "label": "Stock Count for Urgency",
+      "default": 23
+    }
+  ],
+  "presets": [
+    {
+      "name": "Hero Tech Section"
+    }
+  ]
+}
+{% endschema %} 

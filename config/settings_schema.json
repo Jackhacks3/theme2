@@ -1,0 +1,130 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "AI Translation Earbuds",
+    "theme_version": "1.0.0",
+    "theme_author": "AI Assistant",
+    "theme_documentation_url": "",
+    "theme_support_url": ""
+  },
+  {
+    "name": "Colors",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Color Scheme"
+      },
+      {
+        "type": "color",
+        "id": "color_primary",
+        "label": "Primary Color",
+        "default": "#1e3a8a"
+      },
+      {
+        "type": "color",
+        "id": "color_secondary", 
+        "label": "Secondary Color",
+        "default": "#06b6d4"
+      },
+      {
+        "type": "color",
+        "id": "color_accent",
+        "label": "Accent Color",
+        "default": "#10b981"
+      },
+      {
+        "type": "color",
+        "id": "color_text",
+        "label": "Text Color",
+        "default": "#1f2937"
+      },
+      {
+        "type": "color",
+        "id": "color_background",
+        "label": "Background Color",
+        "default": "#ffffff"
+      }
+    ]
+  },
+  {
+    "name": "Typography",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Font Settings"
+      },
+      {
+        "type": "font_picker",
+        "id": "type_header_font",
+        "default": "assistant_n4",
+        "label": "Heading Font"
+      },
+      {
+        "type": "font_picker",
+        "id": "type_body_font",
+        "default": "assistant_n4", 
+        "label": "Body Font"
+      }
+    ]
+  },
+  {
+    "name": "Product Settings",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Product Page"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_urgency_elements",
+        "label": "Show urgency elements",
+        "default": true
+      },
+      {
+        "type": "number",
+        "id": "stock_threshold",
+        "label": "Low stock threshold",
+        "default": 25
+      },
+      {
+        "type": "text",
+        "id": "sale_price",
+        "label": "Featured Sale Price",
+        "default": "89"
+      },
+      {
+        "type": "text",
+        "id": "original_price", 
+        "label": "Original Price",
+        "default": "149"
+      }
+    ]
+  },
+  {
+    "name": "Trust Badges",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Trust & Security"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_trust_badges",
+        "label": "Show trust badges",
+        "default": true
+      },
+      {
+        "type": "text",
+        "id": "guarantee_text",
+        "label": "Money-back guarantee text",
+        "default": "30-Day Money Back Guarantee"
+      },
+      {
+        "type": "text",
+        "id": "shipping_text",
+        "label": "Free shipping text", 
+        "default": "Free Worldwide Shipping"
+      }
+    ]
+  }
+] 

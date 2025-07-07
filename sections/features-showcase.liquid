@@ -1,0 +1,579 @@
+{% comment %}
+  Features Showcase Section
+  Interactive tech features with glassmorphism design
+{% endcomment %}
+
+<section class="features-showcase" id="featuresShowcase">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title gradient-text">
+        {{ section.settings.section_title | default: 'Revolutionary Translation Technology' }}
+      </h2>
+      <p class="section-subtitle">
+        {{ section.settings.section_subtitle | default: 'Powered by cutting-edge AI algorithms and premium hardware engineering' }}
+      </p>
+    </div>
+
+    <div class="features-grid">
+      <!-- Translation Feature -->
+      <div class="feature-card glass-card interactive" data-feature="translation">
+        <div class="feature-header">
+          <div class="feature-icon-container">
+            <div class="feature-icon">🌍</div>
+            <div class="feature-glow"></div>
+          </div>
+          <h3 class="feature-title">163 Languages Supported</h3>
+        </div>
+        
+        <p class="feature-description">
+          Real-time translation in over 163 languages and dialects with contextual understanding
+        </p>
+        
+        <div class="feature-demo translation-demo">
+          <div class="demo-interface">
+            <div class="language-selector">
+              <select class="lang-input" data-type="source">
+                <option value="en">English</option>
+                <option value="es">Spanish</option>
+                <option value="fr">French</option>
+                <option value="de">German</option>
+                <option value="zh">Chinese</option>
+                <option value="ja">Japanese</option>
+              </select>
+              <div class="arrow-icon">→</div>
+              <select class="lang-input" data-type="target">
+                <option value="es">Spanish</option>
+                <option value="en">English</option>
+                <option value="fr">French</option>
+                <option value="de">German</option>
+                <option value="zh">Chinese</option>
+                <option value="ja">Japanese</option>
+              </select>
+            </div>
+            <div class="demo-text">
+              <div class="source-text">"Hello, how are you?"</div>
+              <div class="translated-text">"Hola, ¿cómo estás?"</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="feature-stats">
+          <div class="stat">
+            <span class="stat-value">98%</span>
+            <span class="stat-label">Accuracy</span>
+          </div>
+          <div class="stat">
+            <span class="stat-value">0.5s</span>
+            <span class="stat-label">Response</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Accuracy Feature -->
+      <div class="feature-card glass-card interactive" data-feature="accuracy">
+        <div class="feature-header">
+          <div class="feature-icon-container">
+            <div class="feature-icon">🎯</div>
+            <div class="feature-glow"></div>
+          </div>
+          <h3 class="feature-title">98% Translation Accuracy</h3>
+        </div>
+        
+        <p class="feature-description">
+          AI-powered contextual understanding for precise translations in any situation
+        </p>
+        
+        <div class="feature-demo accuracy-demo">
+          <div class="accuracy-meter">
+            <div class="meter-background">
+              <div class="meter-fill" style="width: 98%"></div>
+              <div class="meter-pointer"></div>
+            </div>
+            <div class="meter-labels">
+              <span>0%</span>
+              <span>50%</span>
+              <span>98%</span>
+              <span>100%</span>
+            </div>
+          </div>
+          <div class="accuracy-examples">
+            <div class="example">
+              <span class="context">Business:</span>
+              <span class="accuracy">99.2%</span>
+            </div>
+            <div class="example">
+              <span class="context">Travel:</span>
+              <span class="accuracy">97.8%</span>
+            </div>
+            <div class="example">
+              <span class="context">Casual:</span>
+              <span class="accuracy">98.5%</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Battery Feature -->
+      <div class="feature-card glass-card interactive" data-feature="battery">
+        <div class="feature-header">
+          <div class="feature-icon-container">
+            <div class="feature-icon">🔋</div>
+            <div class="feature-glow"></div>
+          </div>
+          <h3 class="feature-title">50+ Hour Battery Life</h3>
+        </div>
+        
+        <p class="feature-description">
+          8H earbuds + 50H charging case with fast USB-C charging technology
+        </p>
+        
+        <div class="feature-demo battery-demo">
+          <div class="battery-visual">
+            <div class="earbud-battery">
+              <div class="battery-icon">
+                <div class="battery-level" style="height: 80%"></div>
+              </div>
+              <span class="battery-time">8 Hours</span>
+            </div>
+            <div class="case-battery">
+              <div class="battery-icon">
+                <div class="battery-level" style="height: 90%"></div>
+              </div>
+              <span class="battery-time">50 Hours</span>
+            </div>
+          </div>
+          <div class="charging-info">
+            <div class="charge-stat">
+              <span class="charge-icon">⚡</span>
+              <span class="charge-text">1 hour = 8 hours playback</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Offline Feature -->
+      <div class="feature-card glass-card interactive" data-feature="offline">
+        <div class="feature-header">
+          <div class="feature-icon-container">
+            <div class="feature-icon">📶</div>
+            <div class="feature-glow"></div>
+          </div>
+          <h3 class="feature-title">Works Offline</h3>
+        </div>
+        
+        <p class="feature-description">
+          8 major languages available without internet connection for travel confidence
+        </p>
+        
+        <div class="feature-demo offline-demo">
+          <div class="offline-languages">
+            <div class="lang-item">🇺🇸 English</div>
+            <div class="lang-item">🇪🇸 Spanish</div>
+            <div class="lang-item">🇫🇷 French</div>
+            <div class="lang-item">🇩🇪 German</div>
+            <div class="lang-item">🇮🇹 Italian</div>
+            <div class="lang-item">🇯🇵 Japanese</div>
+            <div class="lang-item">🇰🇷 Korean</div>
+            <div class="lang-item">🇨🇳 Chinese</div>
+          </div>
+          <div class="offline-indicator">
+            <span class="status-icon">📱</span>
+            <span class="status-text">No Internet Required</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Audio Quality Feature -->
+      <div class="feature-card glass-card interactive" data-feature="audio">
+        <div class="feature-header">
+          <div class="feature-icon-container">
+            <div class="feature-icon">🎵</div>
+            <div class="feature-glow"></div>
+          </div>
+          <h3 class="feature-title">Premium Audio Quality</h3>
+        </div>
+        
+        <p class="feature-description">
+          13mm dynamic drivers with crystal-clear voice transmission and noise cancellation
+        </p>
+        
+        <div class="feature-demo audio-demo">
+          <div class="audio-visualizer">
+            <div class="frequency-bars">
+              <div class="bar" style="height: 60%"></div>
+              <div class="bar" style="height: 80%"></div>
+              <div class="bar" style="height: 40%"></div>
+              <div class="bar" style="height: 90%"></div>
+              <div class="bar" style="height: 70%"></div>
+              <div class="bar" style="height: 50%"></div>
+              <div class="bar" style="height: 85%"></div>
+              <div class="bar" style="height: 65%"></div>
+            </div>
+          </div>
+          <div class="audio-specs">
+            <div class="spec">20Hz - 20kHz</div>
+            <div class="spec">Noise Cancelling</div>
+            <div class="spec">13mm Drivers</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Smart Connection Feature -->
+      <div class="feature-card glass-card interactive" data-feature="connection">
+        <div class="feature-header">
+          <div class="feature-icon-container">
+            <div class="feature-icon">📱</div>
+            <div class="feature-glow"></div>
+          </div>
+          <h3 class="feature-title">Smart Device Integration</h3>
+        </div>
+        
+        <p class="feature-description">
+          Seamless connection with iOS and Android via dedicated app with real-time controls
+        </p>
+        
+        <div class="feature-demo connection-demo">
+          <div class="device-icons">
+            <div class="device">📱</div>
+            <div class="connection-line"></div>
+            <div class="device">🎧</div>
+          </div>
+          <div class="connection-status">
+            <span class="status connected">Connected</span>
+            <span class="bluetooth-icon">🔵</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Feature Comparison -->
+    <div class="feature-comparison">
+      <h3>Why Choose Our AI Translation Earbuds?</h3>
+      <div class="comparison-grid">
+        <div class="comparison-item">
+          <span class="comparison-feature">Translation Speed</span>
+          <span class="our-product">0.5 seconds</span>
+          <span class="competitors">2-5 seconds</span>
+        </div>
+        <div class="comparison-item">
+          <span class="comparison-feature">Languages Supported</span>
+          <span class="our-product">163</span>
+          <span class="competitors">20-40</span>
+        </div>
+        <div class="comparison-item">
+          <span class="comparison-feature">Battery Life</span>
+          <span class="our-product">50+ hours</span>
+          <span class="competitors">20-30 hours</span>
+        </div>
+        <div class="comparison-item">
+          <span class="comparison-feature">Offline Support</span>
+          <span class="our-product">8 languages</span>
+          <span class="competitors">2-3 languages</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .features-showcase {
+    padding: 5rem 0;
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+    margin: 3rem 0;
+  }
+
+  .feature-card {
+    background: rgba(255, 255, 255, 0.05);
+    -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 2rem;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .feature-card:hover {
+    transform: translateY(-10px);
+    background: rgba(255, 255, 255, 0.08);
+    box-shadow: 0 20px 60px rgba(6, 182, 212, 0.1);
+  }
+
+  .feature-icon-container {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 1rem;
+  }
+
+  .feature-icon {
+    font-size: 3rem;
+    display: block;
+    position: relative;
+    z-index: 2;
+  }
+
+  .feature-glow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 80px;
+    height: 80px;
+    background: radial-gradient(circle, rgba(6, 182, 212, 0.3) 0%, transparent 70%);
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    animation: glow 2s ease-in-out infinite alternate;
+  }
+
+  @keyframes glow {
+    from { opacity: 0.5; transform: translate(-50%, -50%) scale(1); }
+    to { opacity: 1; transform: translate(-50%, -50%) scale(1.1); }
+  }
+
+  .feature-title {
+    color: white;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+  }
+
+  .feature-description {
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+  }
+
+  .feature-demo {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    padding: 1rem;
+    margin: 1rem 0;
+  }
+
+  .language-selector {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .lang-input {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    padding: 0.5rem;
+    color: white;
+    flex: 1;
+  }
+
+  .demo-text {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .source-text, .translated-text {
+    padding: 0.5rem;
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.05);
+    color: white;
+  }
+
+  .feature-stats {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+
+  .stat {
+    text-align: center;
+    flex: 1;
+  }
+
+  .stat-value {
+    display: block;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #10b981;
+  }
+
+  .stat-label {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.7);
+  }
+
+  .accuracy-meter {
+    margin: 1rem 0;
+  }
+
+  .meter-background {
+    height: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .meter-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #10b981, #06b6d4);
+    border-radius: 10px;
+    transition: width 2s ease;
+  }
+
+  .battery-visual {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    margin: 1rem 0;
+  }
+
+  .earbud-battery, .case-battery {
+    text-align: center;
+  }
+
+  .battery-icon {
+    width: 40px;
+    height: 60px;
+    border: 2px solid #10b981;
+    border-radius: 8px;
+    position: relative;
+    margin: 0 auto 0.5rem;
+    background: rgba(255, 255, 255, 0.1);
+  }
+
+  .battery-level {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(180deg, #10b981, #059669);
+    border-radius: 0 0 6px 6px;
+    transition: height 2s ease;
+  }
+
+  .offline-languages {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.5rem;
+    margin: 1rem 0;
+  }
+
+  .lang-item {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 0.5rem;
+    border-radius: 6px;
+    text-align: center;
+    font-size: 0.9rem;
+    color: white;
+  }
+
+  .audio-visualizer {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    height: 60px;
+    margin: 1rem 0;
+  }
+
+  .frequency-bars {
+    display: flex;
+    gap: 4px;
+    align-items: flex-end;
+    height: 100%;
+  }
+
+  .bar {
+    width: 8px;
+    background: linear-gradient(180deg, #06b6d4, #10b981);
+    border-radius: 4px 4px 0 0;
+    animation: audioWave 1.5s ease-in-out infinite;
+    animation-delay: calc(var(--i) * 0.1s);
+  }
+
+  @keyframes audioWave {
+    0%, 100% { transform: scaleY(0.3); }
+    50% { transform: scaleY(1); }
+  }
+
+  .feature-comparison {
+    margin-top: 4rem;
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(20px);
+  }
+
+  .comparison-grid {
+    display: grid;
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+
+  .comparison-item {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 1rem;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    align-items: center;
+  }
+
+  .our-product {
+    color: #10b981;
+    font-weight: 600;
+    text-align: center;
+  }
+
+  .competitors {
+    color: rgba(255, 255, 255, 0.6);
+    text-align: center;
+  }
+
+  @media (max-width: 768px) {
+    .features-grid {
+      grid-template-columns: 1fr;
+    }
+    
+    .comparison-item {
+      grid-template-columns: 1fr;
+      text-align: center;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Features Showcase",
+  "settings": [
+    {
+      "type": "text",
+      "id": "section_title",
+      "label": "Section Title",
+      "default": "Revolutionary Translation Technology"
+    },
+    {
+      "type": "textarea",
+      "id": "section_subtitle",
+      "label": "Section Subtitle",
+      "default": "Powered by cutting-edge AI algorithms and premium hardware engineering"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Features Showcase"
+    }
+  ]
+}
+{% endschema %} 
